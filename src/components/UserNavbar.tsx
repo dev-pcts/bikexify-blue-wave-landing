@@ -31,10 +31,10 @@ const UserNavbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex gap-6">
-            <li><a href="#bikes" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Bikes</a></li>
-            <li><a href="#how-it-works" className="text-gray-700 hover:text-oceanblue-500 transition-colors">How It Works</a></li>
-            <li><a href="#pricing" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Pricing</a></li>
-            <li><a href="#locations" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Locations</a></li>
+            <li><a href="#dashboard" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Bikes</a></li>
+            <li><a href="#profile" className="text-gray-700 hover:text-oceanblue-500 transition-colors">How It Works</a></li>
+            <li><a href="#support" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Pricing</a></li>
+            <li><a href="#logout" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Locations</a></li>
           </ul>
           <Button className="btn-primary">Book Now</Button>
         </div>
