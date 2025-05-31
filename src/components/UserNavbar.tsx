@@ -31,10 +31,10 @@ const UserNavbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex gap-6">
-            <li><a href="#dashboard" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Bikes</a></li>
-            <li><a href="#profile" className="text-gray-700 hover:text-oceanblue-500 transition-colors">How It Works</a></li>
-            <li><a href="#support" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Pricing</a></li>
-            <li><a href="#logout" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Locations</a></li>
+            <li><a href="#dashboard" className="text-gray-700 hover:text-oceanblue-500 transition-colors">dashboard</a></li>
+            <li><a href="#profile" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Profile</a></li>
+            <li><a href="#support" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Support</a></li>
+            <li><a href="#logout" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Logout</a></li>
           </ul>
           <Button className="btn-primary">Book Now</Button>
         </div>
@@ -49,10 +49,10 @@ const UserNavbar = () => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-md animate-fade-in">
           <ul className="flex flex-col py-4">
-            <li><a href="#dashboard" className="block py-2 px-4 text-gray-700 hover:bg-oceanblue-50 hover:text-oceanblue-500" onClick={() => setIsMenuOpen(false)}>Bikes</a></li>
-            <li><a href="#profile" className="block py-2 px-4 text-gray-700 hover:bg-oceanblue-50 hover:text-oceanblue-500" onClick={() => setIsMenuOpen(false)}>How It Works</a></li>
-            <li><a href="#support" className="block py-2 px-4 text-gray-700 hover:bg-oceanblue-50 hover:text-oceanblue-500" onClick={() => setIsMenuOpen(false)}>Pricing</a></li>
-            <li><a href="#logout" className="block py-2 px-4 text-gray-700 hover:bg-oceanblue-50 hover:text-oceanblue-500" onClick={() => setIsMenuOpen(false)}>Locations</a></li>
+            <li><a href="#dashboard" className="block py-2 px-4 text-gray-700 hover:bg-oceanblue-50 hover:text-oceanblue-500" onClick={() => setIsMenuOpen(false)}>Dahboard</a></li>
+            <li><a href="#profile" className="block py-2 px-4 text-gray-700 hover:bg-oceanblue-50 hover:text-oceanblue-500" onClick={() => setIsMenuOpen(false)}>Profile</a></li>
+            <li><a href="#support" className="block py-2 px-4 text-gray-700 hover:bg-oceanblue-50 hover:text-oceanblue-500" onClick={() => setIsMenuOpen(false)}>Support and FAQ</a></li>
+            <li><a href="#logout" className="block py-2 px-4 text-gray-700 hover:bg-oceanblue-50 hover:text-oceanblue-500" onClick={() => setIsMenuOpen(false)}>Logout</a></li>
             <li className="px-4 py-2"><Button className="btn-primary w-full">Book Now</Button></li>
           </ul>
         </div>
