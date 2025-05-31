@@ -67,7 +67,7 @@ const Locations = () => {
           
           <div className="lg:col-span-3 h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-lg">
             <img 
-              src="https://images.unsplash.com/photo-1569336415962-a4bd9f69c8bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80" 
+              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1631&q=80" 
               alt="Map of Bikexify locations" 
               className="w-full h-full object-cover"
             />

@@ -9,21 +9,21 @@ const bikeTypes = [
     name: 'City Cruiser',
     description: 'Perfect for leisurely rides in the city with comfortable seating and easy handling.',
     price: '$15',
-    image: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+    image: 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
   },
   {
     id: 2,
     name: 'Mountain Bike',
     description: 'Built for off-road adventures with rugged tires and durable construction.',
     price: '$25',
-    image: 'https://images.unsplash.com/photo-1596495578065-6e0763fa1178?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1692&q=80',
+    image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=1692&q=80',
   },
   {
     id: 3,
     name: 'Electric Bike',
     description: 'Enjoy the ride with pedal assist technology for effortless travel around the city.',
     price: '$35',
-    image: 'https://images.unsplash.com/photo-1557074347-e96e8a4d777c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+    image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
   },
 ];
 
