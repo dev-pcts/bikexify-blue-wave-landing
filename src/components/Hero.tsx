@@ -30,7 +30,7 @@ const Hero = () => {
         <div className="mt-16 md:mt-24 relative">
           <div className="aspect-[16/9] max-w-5xl mx-auto overflow-hidden rounded-xl shadow-2xl animate-float">
             <img 
-              src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=1963&q=80" 
+              src="https://images.unsplash.com/photo-1727688008244-43743ebade17?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
               alt="Person riding a bike by the water" 
               className="w-full h-full object-cover"
             />
