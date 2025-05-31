@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -18,9 +19,9 @@ const Hero = () => {
             Experience the city from a new perspective.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="btn-primary flex items-center gap-2 text-lg">
+            <Link to="/signup" className="btn-primary flex items-center gap-2 text-lg">
               Book a Bike <ArrowRight className="h-5 w-5" />
-            </Button>
+            </Link>
             <Button variant="outline" className="btn-secondary text-lg">
               View Locations
             </Button>
