@@ -61,4 +61,4 @@ const UserNavbar = () => {
   );
 };
 
-export default Navbar;
+export default UserNavbar;
