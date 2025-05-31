@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MapPin, Clock, Star, Calendar, Bike } from 'lucide-react';
-import Navbar from '@/components/Navbar';
+import UserNavbar from '@/components/UserNavbar';
 
 const availableRides = [
   {
