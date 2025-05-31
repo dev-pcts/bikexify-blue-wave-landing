@@ -20,7 +20,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/signup" className="btn-primary flex items-center gap-2 text-lg">
-              Book a Bike <ArrowRight className="h-5 w-5" />
+              Get Started <ArrowRight className="h-5 w-5" />
             </Link>
             <Button variant="outline" className="btn-secondary text-lg">
               View Locations

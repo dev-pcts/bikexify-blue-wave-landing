@@ -1,232 +1,249 @@
-
-import React, { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Mail, Phone, MessageCircle, ChevronDown } from 'lucide-react';
-import Navbar from '@/components/Navbar';
-
-const faqData = [
-  {
-    category: 'Getting Started',
-    questions: [
-      {
-        question: 'How do I rent a bike?',
-        answer: 'To rent a bike, simply find a nearby station on our app, select an available bike, and unlock it using your account. Payment is processed automatically through your registered payment method.'
-      },
-      {
-        question: 'What do I need to get started?',
-        answer: 'You need to create an account with a valid email, phone number, and payment method. You must be 18 years or older and agree to our terms of service.'
-      },
-      {
-        question: 'How much does it cost?',
-        answer: 'Our pricing starts at $15/hour for city bikes, $25/hour for mountain bikes, and $35/hour for electric bikes. We also offer daily and monthly passes for frequent riders.'
-      }
-    ]
-  },
-  {
-    category: 'Bike Usage',
-    questions: [
-      {
-        question: 'How do I unlock a bike?',
-        answer: 'Open the Bikexify app, select a bike from the map, and tap "Unlock". The bike will automatically unlock and your ride will begin.'
-      },
-      {
-        question: 'What if the bike is damaged?',
-        answer: 'If you notice any damage before your ride, please report it through the app and select a different bike. If damage occurs during your ride, end your trip immediately and report the issue.'
-      },
-      {
-        question: 'Can I pause my ride?',
-        answer: 'Yes, you can pause your ride for up to 15 minutes without additional charges. Simply lock the bike at any designated parking area and select "Pause Ride" in the app.'
-      }
-    ]
-  },
-  {
-    category: 'Payment & Billing',
-    questions: [
-      {
-        question: 'What payment methods are accepted?',
-        answer: 'We accept all major credit cards, debit cards, PayPal, and mobile payment methods like Apple Pay and Google Pay.'
-      },
-      {
-        question: 'When am I charged?',
-        answer: 'You are charged when you end your ride. The final amount depends on the duration of your trip and the type of bike used.'
-      },
-      {
-        question: 'What if I was overcharged?',
-        answer: 'If you believe there was an error in your billing, please contact our support team with your ride details. We will investigate and process any necessary refunds within 3-5 business days.'
-      }
-    ]
-  }
-];
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import UserNavbar from "@/components/UserNavbar";
+import { HelpCircle, MessageCircle, Phone, Mail, ChevronDown, ChevronUp } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const Support = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [contactForm, setContactForm] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleLogout = () => {
+    toast({
+      title: "Logged out successfully",
+      description: "Come back soon!",
+    });
+    navigate("/");
+  };
+
+  const faqs = [
+    {
+      id: 1,
+      question: "How do I book a bike?",
+      answer: "Simply log into your account, browse available bikes near you, and click 'Book Now'. You can unlock the bike using our app when you arrive at the station."
+    },
+    {
+      id: 2,
+      question: "What are the rental rates?",
+      answer: "Our standard rate is $3.50 per hour. We also offer daily passes for $15 and monthly memberships starting at $25. Students get a 20% discount!"
+    },
+    {
+      id: 3,
+      question: "How do I earn loyalty points?",
+      answer: "You earn 1 point for every dollar spent on bike rentals. Bonus points are awarded for longer rides and eco-friendly challenges. Points never expire!"
+    },
+    {
+      id: 4,
+      question: "What if I encounter a problem with my bike?",
+      answer: "If you experience any issues, please contact our support team immediately through the app or call our 24/7 helpline. We'll assist you right away and ensure your safety."
+    },
+    {
+      id: 5,
+      question: "Can I return the bike to any station?",
+      answer: "Yes! You can return your bike to any Bikexify station across the city. Just make sure to properly dock the bike and confirm the return in our app."
+    },
+    {
+      id: 6,
+      question: "What safety equipment is provided?",
+      answer: "All bikes come with built-in lights and reflectors. We also provide complimentary helmets at all stations, though we encourage bringing your own for the best fit."
+    }
+  ];
+
+  const handleFaqToggle = (id: number) => {
+    setExpandedFaq(expandedFaq === id ? null : id);
+  };
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Message sent!",
+      description: "We'll get back to you within 24 hours.",
+    });
+    setContactForm({ name: "", email: "", subject: "", message: "" });
+  };
+
+  const handleContactChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setContactForm(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Contact form submitted:', contactForm);
-    // Add form submission logic here
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <div className="pt-20 pb-8">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="mb-8 text-center">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Customer Support</h1>
-            <p className="text-gray-600">We're here to help you with any questions or issues</p>
-          </div>
+      <UserNavbar />
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">How can we help you?</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Find answers to common questions or get in touch with our friendly support team
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            <Card className="text-center">
-              <CardContent className="pt-6">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-blue-100 rounded-full">
-                    <Mail className="h-6 w-6 text-blue-600" />
-                  </div>
-                </div>
-                <h3 className="font-semibold mb-2">Email Support</h3>
-                <p className="text-gray-600 text-sm mb-4">Get help via email</p>
-                <p className="text-oceanblue-600 font-medium">support@bikexify.com</p>
-              </CardContent>
-            </Card>
+        {/* Quick Contact Options */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+            <CardContent className="p-6 text-center">
+              <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MessageCircle className="h-8 w-8 text-sky-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Live Chat</h3>
+              <p className="text-gray-600 mb-4">Get instant help from our support team</p>
+              <Button className="bg-sky-600 hover:bg-sky-700 text-white">
+                Start Chat
+              </Button>
+            </CardContent>
+          </Card>
 
-            <Card className="text-center">
-              <CardContent className="pt-6">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-green-100 rounded-full">
-                    <Phone className="h-6 w-6 text-green-600" />
-                  </div>
-                </div>
-                <h3 className="font-semibold mb-2">Phone Support</h3>
-                <p className="text-gray-600 text-sm mb-4">Call us directly</p>
-                <p className="text-oceanblue-600 font-medium">1-800-BIKEXIFY</p>
-              </CardContent>
-            </Card>
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+            <CardContent className="p-6 text-center">
+              <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="h-8 w-8 text-sky-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Call Us</h3>
+              <p className="text-gray-600 mb-4">24/7 phone support available</p>
+              <Button variant="outline" className="border-sky-600 text-sky-600 hover:bg-sky-600 hover:text-white">
+                (555) 123-BIKE
+              </Button>
+            </CardContent>
+          </Card>
 
-            <Card className="text-center">
-              <CardContent className="pt-6">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-purple-100 rounded-full">
-                    <MessageCircle className="h-6 w-6 text-purple-600" />
-                  </div>
-                </div>
-                <h3 className="font-semibold mb-2">Live Chat</h3>
-                <p className="text-gray-600 text-sm mb-4">Chat with us now</p>
-                <Button className="bg-oceanblue-500 hover:bg-oceanblue-600">Start Chat</Button>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+            <CardContent className="p-6 text-center">
+              <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="h-8 w-8 text-sky-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Email Support</h3>
+              <p className="text-gray-600 mb-4">We'll respond within 24 hours</p>
+              <Button variant="outline" className="border-sky-600 text-sky-600 hover:bg-sky-600 hover:text-white">
+                Send Email
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Frequently Asked Questions</CardTitle>
-                  <CardDescription>Find answers to common questions</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {faqData.map((category, categoryIndex) => (
-                    <div key={categoryIndex} className="mb-6">
-                      <h3 className="font-semibold text-lg mb-3 text-oceanblue-600">{category.category}</h3>
-                      <Accordion type="single" collapsible className="w-full">
-                        {category.questions.map((faq, faqIndex) => (
-                          <AccordionItem key={faqIndex} value={`${categoryIndex}-${faqIndex}`}>
-                            <AccordionTrigger className="text-left">
-                              {faq.question}
-                            </AccordionTrigger>
-                            <AccordionContent className="text-gray-600">
-                              {faq.answer}
-                            </AccordionContent>
-                          </AccordionItem>
-                        ))}
-                      </Accordion>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* FAQ Section */}
+          <div>
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <HelpCircle className="h-5 w-5 text-sky-600" />
+                  <span>Frequently Asked Questions</span>
+                </CardTitle>
+                <CardDescription>
+                  Quick answers to common questions about Bikexify
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {faqs.map((faq) => (
+                    <div key={faq.id} className="border border-gray-200 rounded-lg">
+                      <button
+                        onClick={() => handleFaqToggle(faq.id)}
+                        className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                      >
+                        <span className="font-medium text-gray-900">{faq.question}</span>
+                        {expandedFaq === faq.id ? (
+                          <ChevronUp className="h-5 w-5 text-gray-500" />
+                        ) : (
+                          <ChevronDown className="h-5 w-5 text-gray-500" />
+                        )}
+                      </button>
+                      {expandedFaq === faq.id && (
+                        <div className="px-4 pb-3 text-gray-600 border-t border-gray-200">
+                          <p className="pt-3">{faq.answer}</p>
+                        </div>
+                      )}
                     </div>
                   ))}
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
-            <div>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Contact Us</CardTitle>
-                  <CardDescription>Send us a message and we'll get back to you</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="name">Name</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          value={contactForm.name}
-                          onChange={handleInputChange}
-                          className="focus:ring-2 focus:ring-oceanblue-500 focus:border-oceanblue-500"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={contactForm.email}
-                          onChange={handleInputChange}
-                          className="focus:ring-2 focus:ring-oceanblue-500 focus:border-oceanblue-500"
-                          required
-                        />
-                      </div>
-                    </div>
+          {/* Contact Form */}
+          <div>
+            <Card className="border-0 shadow-lg">
+              <CardHeader>
+                <CardTitle>Send us a message</CardTitle>
+                <CardDescription>
+                  Can't find what you're looking for? Drop us a line and we'll get back to you soon.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleContactSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
+                      <Label htmlFor="name">Name</Label>
                       <Input
-                        id="subject"
-                        name="subject"
-                        value={contactForm.subject}
-                        onChange={handleInputChange}
-                        className="focus:ring-2 focus:ring-oceanblue-500 focus:border-oceanblue-500"
+                        id="name"
+                        name="name"
+                        value={contactForm.name}
+                        onChange={handleContactChange}
+                        className="border-gray-300 focus:border-sky-500 focus:ring-sky-500"
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        rows={6}
-                        value={contactForm.message}
-                        onChange={handleInputChange}
-                        className="focus:ring-2 focus:ring-oceanblue-500 focus:border-oceanblue-500"
+                      <Label htmlFor="email">Email</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={contactForm.email}
+                        onChange={handleContactChange}
+                        className="border-gray-300 focus:border-sky-500 focus:ring-sky-500"
                         required
                       />
                     </div>
-                    <Button type="submit" className="w-full bg-oceanblue-500 hover:bg-oceanblue-600">
-                      Send Message
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={contactForm.subject}
+                      onChange={handleContactChange}
+                      className="border-gray-300 focus:border-sky-500 focus:ring-sky-500"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      value={contactForm.message}
+                      onChange={handleContactChange}
+                      className="border-gray-300 focus:border-sky-500 focus:ring-sky-500"
+                      required
+                    />
+                  </div>
+
+                  <Button type="submit" className="w-full bg-sky-600 hover:bg-sky-700 text-white">
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

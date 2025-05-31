@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Bike, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +37,8 @@ const Navbar = () => {
             <li><a href="#pricing" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Pricing</a></li>
             <li><a href="#locations" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Locations</a></li>
           </ul>
-          <Button className="btn-primary">Book Now</Button>
+          <Link to="/signup" className="btn-primary">Get started</Link>
+          {/* <Button className="btn-primary">Book Now</Button> */}
         </div>
 
         {/* Mobile Navigation Toggle */}

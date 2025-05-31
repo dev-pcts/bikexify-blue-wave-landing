@@ -8,22 +8,22 @@ const bikeTypes = [
     id: 1,
     name: 'City Cruiser',
     description: 'Perfect for leisurely rides in the city with comfortable seating and easy handling.',
-    price: '$15',
+    price: 'Ksh 2000',
     image: 'https://images.unsplash.com/photo-1502744688674-c619d1586c9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
   },
   {
     id: 2,
     name: 'Mountain Bike',
     description: 'Built for off-road adventures with rugged tires and durable construction.',
-    price: '$25',
+    price: 'ksh 3000',
     image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=1692&q=80',
   },
   {
     id: 3,
-    name: 'Electric Bike',
+    name: 'Hybrid Bike',
     description: 'Enjoy the ride with pedal assist technology for effortless travel around the city.',
-    price: '$35',
-    image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
+    price: 'ksh 5000',
+    image: 'https://images.unsplash.com/photo-1744789978417-d4ffb2920ed8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aHlicmlkJTIwYmlrZXxlbnwwfHwwfHx8MA%3D%3D',
   },
 ];
 

@@ -6,17 +6,17 @@ import { Button } from '@/components/ui/button';
 const locations = [
   {
     id: 1,
-    name: 'Downtown Hub',
-    address: '123 Main Street, Downtown',
-    hours: '7:00 AM - 10:00 PM',
+    name: 'University of Eldoret',
+    address: '123 Main Street, Chepkoilel',
+    hours: '7:00 AM - 8:00 PM',
     phone: '(555) 123-4567',
     coordinates: [40.7128, -74.0060],
   },
   {
     id: 2,
-    name: 'Waterfront Station',
-    address: '456 Harbor View, Waterfront',
-    hours: '8:00 AM - 9:00 PM',
+    name: 'Eldoret CBD',
+    address: '456 Harbor View, CBD',
+    hours: '7:00 AM - 7:00 PM',
     phone: '(555) 987-6543',
     coordinates: [40.7023, -73.9871],
   },

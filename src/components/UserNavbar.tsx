@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Bike, Menu, X } from 'lucide-react';
+import { Bike, Menu, X, LogOut } from 'lucide-react';
+
+
 
 const UserNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,6 +27,14 @@ const UserNavbar = () => {
     navigate('/signup'); // Or whatever route you want for booking
   };
 
+  const handleLogout = () => {
+  // Add any logout logic here (clearing tokens, state, etc.)
+  // For example:
+  // localStorage.removeItem('authToken');
+  // Then redirect to root
+  navigate('/');
+}
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -39,9 +49,16 @@ const UserNavbar = () => {
             <li><Link to="/dashboard" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Dashboard</Link></li>
             <li><Link to="/profile" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Profile</Link></li>
             <li><Link to="/support" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Support</Link></li>
-            <li><a href="#logout" className="text-gray-700 hover:text-oceanblue-500 transition-colors">Logout</a></li>
+            <Button 
+                  onClick={handleLogout}
+                  variant="outline" 
+                  className="border-sky-600 text-sky-600 hover:bg-sky-600 hover:text-white"
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </Button>
           </ul>
-          <Button className="btn-primary" onClick={handleBookNow}>Book Now</Button>
+          {/* <Button className="btn-primary" onClick={handleBookNow}>Book Now</Button> */}
         </div>
 
         {/* Mobile Navigation Toggle */}

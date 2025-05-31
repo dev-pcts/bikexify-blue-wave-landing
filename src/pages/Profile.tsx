@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { User, Mail, Phone, Star, Edit, Gift } from 'lucide-react';
-import Navbar from '@/components/Navbar';
+import UserNavbar from '@/components/UserNavbar';
 
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -35,7 +35,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+      <UserNavbar />
       <div className="pt-20 pb-8">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="mb-8">

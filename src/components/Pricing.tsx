@@ -7,8 +7,8 @@ const pricingPlans = [
   {
     id: 1,
     name: 'Single Ride',
-    price: '$15',
-    duration: 'per hour',
+    price: 'ksh 10',
+    duration: 'per ride',
     features: [
       'Access to city cruisers',
       'Mobile app access',
@@ -20,9 +20,9 @@ const pricingPlans = [
   },
   {
     id: 2,
-    name: 'Day Pass',
-    price: '$35',
-    duration: 'per day',
+    name: 'Weekly Pass',
+    price: 'ksh 300',
+    duration: 'per week',
     features: [
       'Access to all bike types',
       'Mobile app access',
@@ -36,7 +36,7 @@ const pricingPlans = [
   {
     id: 3,
     name: 'Monthly',
-    price: '$129',
+    price: 'ksh 800',
     duration: 'per month',
     features: [
       'Unlimited 2-hour rides',
